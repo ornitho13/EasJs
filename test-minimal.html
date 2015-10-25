@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EasJs Minimal</title>
+    <script src="EasJs.full.js"></script>
+    <script>
+        /*EasJs.applyConfig({
+            transitionEnabled : false
+        });*/
+        console.time("timerLoad");
+        EasJs.load('accueil.css', {type : 'css'}).load('accueil.js', {type : 'js'}).finish(function(){
+            /*EasJs.addEvent(document.getElementById('top'), 'click', function(){
+                EasJs.scrollTo({top: 30, left: 0}, 0);
+            });*/
+            var top = document.getElementById('top');
+            EasJs.data(top, 'test', 'test-value-2');
+            //console.log(EasJs.data(top, 'test'));
+            EasJs.lazyLoadImage(document.getElementsByTagName('img'));
+            $$('h1').addClass('test-classname').addClass('test-className-2').removeClass('test-classname').html('test H1 add html').replaceWith('<h2 class="test-className-2">Je suis un h2</h2>');
+            console.log('h1', $$('h2').html('test v2'));
+            console.log('h1', $$('.test-className-2').html('test v2'));
+            console.log('h1', $$('h2.test-className-2'));
+            console.log('top', $$(document.getElementById('top')).data('test'));
+            /*EasJs.addClass(document.getElementsByTagName('h1'), 'test');
+            EasJs.addClass(document.getElementsByTagName('h1'), 'test2');
+            EasJs.removeClass(document.getElementsByTagName('h1'), 'test');*/
+        });
+        console.timeEnd("timerLoad");
+        EasJs.ajax({
+            url : 'test.js',
+            dataType : 'javascript',
+            type : 'GET',
+            cache : false,
+            data : {
+                'test' : 'test'
+            },
+            success : function(response){
+                //console.log(response);
+                //document.body.appendChild(response);
+            },
+            fail : function(xhr, status, errorResponse) {
+                console.log(xhr, status, errorResponse);
+            },
+            complete : function() {
+                console.log('ajax finish');
+            }
+        });
+
+    </script>
+    <link rel="stylesheet" href="EasCss.css"/>
+</head>
+<body>
+    <h1>Test EasJS Minimal</h1>
+    <img src="" data-original="batman.jpg" class="eas-image" height="200"/><br/>
+    sqdfjjnqsdflsq kdfjqsmdlfk jsqmilf jqsmlfkj qsmldkfj qsmdflkjqsmdpx flkjqs dflj smlfkjqsmlkf jqmlkfj qsmlfkj qsmkflj qsmflj qsmfdlqsf
+    qs dfmlkqsdfj qlsdfj qslfhqslkfj hqsldjfh qsljfh qslkfhqs lkfhqsdf lkjqsh flksqjfhlsqkjf hlsqjf hsqljf qhsl fjqsdl jf h qslfdjhqs ldf$sqdfjlqhf$q
+    sflqsj fhqlsfjh sqldfkjsqh lfkhsqf kqshf lqksjhfljqs fhqljsf hlqsj fhlqsjdf hqsl fqls fhqlsdfh lqsdfj qsl dfjhqslfjh sqlfksqldfkjlsqdlf
+    <br/>sqdfjjnqsdflsq kdfjqsmdlfk jsqmilf jqsmlfkj qsmldkfj qsmdflkjqsmd flkjqs dflj smlfkjqsmlkf jqmlkfj qsmlfkj qsmkflj qsmflj qsmfdlqsf
+    qs dfmlkqsdfj qlsdfj qslfhqslkfj hqsldjfh qsljfh qslkfhqs lkfhqsdf lkjqsh flksqjfhlsqkjf hlsqjf hsqljf qhsl fjqsdl jf h qslfdjhqs ldf$sqdfjlqhf$q
+    sflqsj fhqlsfjh sqldfkjsqh lfkhsqf kqshf lqksjhfljqs fhqljsf hlqsj fhlqsjdf hqsl fqls fhqlsdfh lqsdfj qsl dfjhqslfjh sqlfksqldfkjlsqdlf
+    <br/>sqdfjjnqsdflsq kdfjqsmdlfk jsqmilf jqsmlfkj qsmldkfj qsmdflkjqsmd flkjqs dflj smlfkjqsmlkf jqmlkfj qsmlfkj qsmkflj qsmflj qsmfdlqsf
+    qs dfmlkqsdfj qlsdfj qslfhqslkfj hqsldjfh qsljfh qslkfhqs lkfhqsdf lkjqsh flksqjfhlsqkjf hlsqjf hsqljf qhsl fjqsdl jf h qslfdjhqs ldf$sqdfjlqhf$q
+    sflqsj fhqlsfjh sqldfkjsqh lfkhsqf kqshf lqksjhfljqs fhqljsf hlqsj fhlqsjdf hqsl fqls fhqlsdfh lqsdfj qsl dfjhqslfjh sqlfksqldfkjlsqdlf
+    <br/>sqdfjjnqsdflsq kdfjqsmdlfk jsqmilf jqsmlfkj qsmldkfj qsmdflkjqsmd flkjqs dflj smlfkjqsmlkf jqmlkfj qsmlfkj qsmkflj qsmflj qsmfdlqsf
+    qs dfmlkqsdfj qlsdfj qslfhqslkfj hqsldjfh qsljfh qslkfhqs lkfhqsdf lkjqsh flksqjfhlsqkjf hlsqjf hsqljf qhsl fjqsdl jf h qslfdjhqs ldf$sqdfjlqhf$q
+    sflqsj fhqlsfjh sqldfkjsqh lfkhsqf kqshf lqksjhfljqs fhqljsf hlqsj fhlqsjdf hqsl fqls fhqlsdfh lqsdfj qsl dfjhqslfjh sqlfksqldfkjlsqdlf
+    <br/>sqdfjjnqsdflsq kdfjqsmdlfk jsqmilf jqsmlfkj qsmldkfj qsmdflkjqsmd flkjqs dflj smlfkjqsmlkf jqmlkfj qsmlfkj qsmkflj qsmflj qsmfdlqsf
+    qs dfmlkqsdfj qlsdfj qslfhqslkfj hqsldjfh qsljfh qslkfhqs lkfhqsdf lkjqsh flksqjfhlsqkjf hlsqjf hsqljf qhsl fjqsdl jf h qslfdjhqs ldf$sqdfjlqhf$q
+    sflqsj fhqlsfjh sqldfkjsqh lfkhsqf kqshf lqksjhfljqs fhqljsf hlqsj fhlqsjdf hqsl fqls fhqlsdfh lqsdfj qsl dfjhqslfjh sqlfksqldfkjlsqdlf
+    <br/>sqdfjjnqsdflsq kdfjqsmdlfk jsqmilf jqsmlfkj qsmldkfj qsmdflkjqsmd flkjqs dflj smlfkjqsmlkf jqmlkfj qsmlfkj qsmkflj qsmflj qsmfdlqsf
+    qs dfmlkqsdfj qlsdfj qslfhqslkfj hqsldjfh qsljfh qslkfhqs lkfhqsdf lkjqsh flksqjfhlsqkjf hlsqjf hsqljf qhsl fjqsdl jf h qslfdjhqs ldf$sqdfjlqhf$q
+    sflqsj fhqlsfjh sqldfkjsqh lfkhsqf kqshf lqksjhfljqs fhqljsf hlqsj fhlqsjdf hqsl fqls fhqlsdfh lqsdfj qsl dfjhqslfjh sqlfksqldfkjlsqdlf
+    <br/>sqdfjjnqsdflsq kdfjqsmdlfk jsqmilf jqsmlfkj qsmldkfj qsmdflkjqsmd flkjqs dflj smlfkjqsmlkf jqmlkfj qsmlfkj qsmkflj qsmflj qsmfdlqsf
+    qs dfmlkqsdfj qlsdfj qslfhqslkfj hqsldjfh qsljfh qslkfhqs lkfhqsdf lkjqsh flksqjfhlsqkjf hlsqjf hsqljf qhsl fjqsdl jf h qslfdjhqs ldf$sqdfjlqhf$q
+    sflqsj fhqlsfjh sqldfkjsqh lfkhsqf kqshf lqksjhfljqs fhqljsf hlqsj fhlqsjdf hqsl fqls fhqlsdfh lqsdfj qsl dfjhqslfjh sqlfksqldfkjlsqdlf
+    <br/>sqdfjjnqsdflsq kdfjqsmdlfk jsqmilf jqsmlfkj qsmldkfj qsmdflkjqsmd flkjqs dflj smlfkjqsmlkf jqmlkfj qsmlfkj qsmkflj qsmflj qsmfdlqsf
+    qs dfmlkqsdfj qlsdfj qslfhqslkfj hqsldjfh qsljfh qslkfhqs lkfhqsdf lkjqsh flksqjfhlsqkjf hlsqjf hsqljf qhsl fjqsdl jf h qslfdjhqs ldf$sqdfjlqhf$q
+    sflqsj fhqlsfjh sqldfkjsqh lfkhsqf kqshf lqksjhfljqs fhqljsf hlqsj fhlqsjdf hqsl fqls fhqlsdfh lqsdfj qsl dfjhqslfjh sqlfksqldfkjlsqdlf
+    <br/>sqdfjjnqsdflsq kdfjqsmdlfk jsqmilf jqsmlfkj qsmldkfj qsmdflkjqsmd flkjqs dflj smlfkjqsmlkf jqmlkfj qsmlfkj qsmkflj qsmflj qsmfdlqsf
+    qs dfmlkqsdfj qlsdfj qslfhqslkfj hqsldjfh qsljfh qslkfhqs lkfhqsdf lkjqsh flksqjfhlsqkjf hlsqjf hsqljf qhsl fjqsdl jf h qslfdjhqs ldf$sqdfjlqhf$q
+    sflqsj fhqlsfjh sqldfkjsqh lfkhsqf kqshf lqksjhfljqs fhqljsf hlqsj fhlqsjdf hqsl fqls fhqlsdfh lqsdfj qsl dfjhqslfjh sqlfksqldfkjlsqdlf
+    <br/>sqdfjjnqsdflsq kdfjqsmdlfk jsqmilf jqsmlfkj qsmldkfj qsmdflkjqsmd flkjqs dflj smlfkjqsmlkf jqmlkfj qsmlfkj qsmkflj qsmflj qsmfdlqsf
+    qs dfmlkqsdfj qlsdfj qslfhqslkfj hqsldjfh qsljfh qslkfhqs lkfhqsdf lkjqsh flksqjfhlsqkjf hlsqjf hsqljf qhsl fjqsdl jf h qslfdjhqs ldf$sqdfjlqhf$q
+    sflqsj fhqlsfjh sqldfkjsqh lfkhsqf kqshf lqksjhfljqs fhqljsf hlqsj fhlqsjdf hqsl fqls fhqlsdfh lqsdfj qsl dfjhqslfjh sqlfksqldfkjlsqdlf
+    <br/>sqdfjjnqsdflsq kdfjqsmdlfk jsqmilf jqsmlfkj qsmldkfj qsmdflkjqsmd flkjqs dflj smlfkjqsmlkf jqmlkfj qsmlfkj qsmkflj qsmflj qsmfdlqsf
+    qs dfmlkqsdfj qlsdfj qslfhqslkfj hqsldjfh qsljfh qslkfhqs lkfhqsdf lkjqsh flksqjfhlsqkjf hlsqjf hsqljf qhsl fjqsdl jf h qslfdjhqs ldf$sqdfjlqhf$q
+    sflqsj fhqlsfjh sqldfkjsqh lfkhsqf kqshf lqksjhfljqs fhqljsf hlqsj fhlqsjdf hqsl fqls fhqlsdfh lqsdfj qsl dfjhqslfjh sqlfksqldfkjlsqdlf
+    <br/>sqdfjjnqsdflsq kdfjqsmdlfk jsqmilf jqsmlfkj qsmldkfj qsmdflkjqsmd flkjqs dflj smlfkjqsmlkf jqmlkfj qsmlfkj qsmkflj qsmflj qsmfdlqsf
+    qs dfmlkqsdfj qlsdfj qslfhqslkfj hqsldjfh qsljfh qslkfhqs lkfhqsdf lkjqsh flksqjfhlsqkjf hlsqjf hsqljf qhsl fjqsdl jf h qslfdjhqs ldf$sqdfjlqhf$q
+    sflqsj fhqlsfjh sqldfkjsqh lfkhsqf kqshf lqksjhfljqs fhqljsf hlqsj fhlqsjdf hqsl fqls fhqlsdfh lqsdfj qsl dfjhqslfjh sqlfksqldfkjlsqdlf
+    <br/>sqdfjjnqsdflsq kdfjqsmdlfk jsqmilf jqsmlfkj qsmldkfj qsmdflkjqsmd flkjqs dflj smlfkjqsmlkf jqmlkfj qsmlfkj qsmkflj qsmflj qsmfdlqsf
+    qs dfmlkqsdfj qlsdfj qslfhqslkfj hqsldjfh qsljfh qslkfhqs lkfhqsdf lkjqsh flksqjfhlsqkjf hlsqjf hsqljf qhsl fjqsdl jf h qslfdjhqs ldf$sqdfjlqhf$q
+    sflqsj fhqlsfjh sqldfkjsqh lfkhsqf kqshf lqksjhfljqs fhqljsf hlqsj fhlqsjdf hqsl fqls fhqlsdfh lqsdfj qsl dfjhqslfjh sqlfksqldfkjlsqdlf
+    <br/>
+    <img src="" data-original="batman.jpg" class="eas-image" height="200"/><br/>
+    sqdfjjnqsdflsq kdfjqsmdlfk jsqmilf jqsmlfkj qsmldkfj qsmdflkjqsmd flkjqs dflj smlfkjqsmlkf jqmlkfj qsmlfkj qsmkflj qsmflj qsmfdlqsf
+    qs dfmlkqsdfj qlsdfj qslfhqslkfj hqsldjfh qsljfh qslkfhqs lkfhqsdf lkjqsh flksqjfhlsqkjf hlsqjf hsqljf qhsl fjqsdl jf h qslfdjhqs ldf$sqdfjlqhf$q
+    sflqsj fhqlsfjh sqldfkjsqh lfkhsqf kqshf lqksjhfljqs fhqljsf hlqsj fhlqsjdf hqsl fqls fhqlsdfh lqsdfj qsl dfjhqslfjh sqlfksqldfkjlsqdlf
+    <br/>
+    <img src="" data-original="batman.jpg" class="eas-image" height="200"/><br/>
+    sqdfjjnqsdflsq kdfjqsmdlfk jsqmilf jqsmlfkj qsmldkfj qsmdflkjqsmd flkjqs dflj smlfkjqsmlkf jqmlkfj qsmlfkj qsmkflj qsmflj qsmfdlqsf
+    qs dfmlkqsdfj qlsdfj qslfhqslkfj hqsldjfh qsljfh qslkfhqs lkfhqsdf lkjqsh flksqjfhlsqkjf hlsqjf hsqljf qhsl fjqsdl jf h qslfdjhqs ldf$sqdfjlqhf$q
+    sflqsj fhqlsfjh sqldfkjsqh lfkhsqf kqshf lqksjhfljqs fhqljsf hlqsj fhlqsjdf hqsl fqls fhqlsdfh lqsdfj qsl dfjhqslfjh sqlfksqldfkjlsqdlf
+    <br/>
+    <img src="" data-original="batman.jpg" class="eas-image" height="200"/>
+    <img src="" data-original="batman.jpg" class="eas-image" height="200"/>
+    <img src="" data-original="batman.jpg" class="eas-image" height="200"/><img src="" data-original="batman.jpg" class="eas-image" height="200"/><img src="" data-original="batman.jpg" class="eas-image" height="200"/><img src="" data-original="batman.jpg" class="eas-image" height="200"/>
+    <img src="" data-original="batman.jpg" class="eas-image" height="200"/><img src="" data-original="batman.jpg" class="eas-image" height="200"/><img src="" data-original="batman.jpg" class="eas-image" height="200"/>
+    <img src="" data-original="batman.jpg" class="eas-image" height="200"/><img src="" data-original="batman.jpg" class="eas-image" height="200"/><img src="" data-original="batman.jpg" class="eas-image" height="200"/>
+    <img src="" data-original="batman.jpg" class="eas-image" height="200"/><img src="" data-original="batman.jpg" class="eas-image" height="200"/>
+
+
+
+
+<button id="top" data-test="test-value">go top</button>
+</body>
+</html>

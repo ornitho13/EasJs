@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<style>
+    #test, #test-2 {
+        background: #111;
+        height: 50px;
+        width: 150px;
+    }
+    #test {
+        margin-bottom: 30px;
+    }
+</style>
+<script type="text/javascript" src="fastJs.js"></script>
+<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
+
+
+<title>Insert title here</title>
+</head>
+<!-- 
+<div id="test" class="test">
+    <div class="next-div"></div>
+</div>
+<div id="test-2"></div>
+<div class="test-3"></div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="//static.debray-jerome.fr/22/scripts/fastJs.js"></script>
+ -->
+
+<body>
+<div id="test" class="test">
+    <div class="next-div">plop</div>
+</div>
+<div id="test-2" class="test"></div>
+<div class="test-3">test 23</div>
+
+<script type="text/javascript">
+console.dir(document.getElementsByClassName('test'));
+console.log(fastJs('.test').append('<span>plop</span>'));
+/*fastJs('.test').append('<h3>prepend to next-div</h3> <h2></h2><h5></h5>');
+console.log(fastJs.trim(' test '));
+fastJs.ajax({
+	url : '/blog-v2/ajax/index.html',
+	data : {'tags' : 'jQuery', '_' : new Date().getTime(), 'id' : 6},
+    success : function(response) {
+    	console.log(response);
+    	fastJs('body').append(response);
+    },
+    error : function() {
+    	console.log('error');
+    },
+    complete : function() {
+    	console.log('complete');
+    }
+});*/
+</script>
+</body>
+</html>
