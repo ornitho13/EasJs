@@ -9,20 +9,26 @@
             transitionEnabled : false
         });*/
         console.time("timerLoad");
-        EasJs.load('accueil.css', {type : 'css'}).load('accueil.js', {type : 'js'}).finish(function(){
+        E.load('accueil.css', {type : 'css'}).load('accueil.js', {type : 'js'}).finish(function(){
             /*EasJs.addEvent(document.getElementById('top'), 'click', function(){
                 EasJs.scrollTo({top: 30, left: 0}, 0);
             });*/
             var top = document.getElementById('top');
             EasJs.data(top, 'test', 'test-value-2');
             //console.log(EasJs.data(top, 'test'));
-            EasJs.lazyLoadImage(document.getElementsByTagName('img'));
+            E.lazyLoadImage(document.getElementsByTagName('img'));
             $$('h1').addClass('test-classname').addClass('test-className-2').removeClass('test-classname').html('test H1 add html').replaceWith('<h2 class="test-className-2">Je suis un h2</h2>');
             console.log('h1', $$('h2').html('test v2'));
             console.log('h1', $$('.test-className-2').html('test v2'));
             console.log('h1', $$('h2.test-className-2'));
             console.log('button', $$(document.getElementsByTagName('button')));
             console.log('top', $$(document.getElementsByTagName('button')).data('test'));
+            console.log(
+                $$('button').css({
+                    'bottom': '50px',
+                    'right': '100px'
+                })
+            );
             /*EasJs.addClass(document.getElementsByTagName('h1'), 'test');
             EasJs.addClass(document.getElementsByTagName('h1'), 'test2');
             EasJs.removeClass(document.getElementsByTagName('h1'), 'test');*/
@@ -114,6 +120,6 @@
 
 
 
-<button id="top" data-test="test-value">go top</button>
+<button id="top" data-test="test-value">go top<span>test</span></button>
 </body>
 </html>

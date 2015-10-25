@@ -100,22 +100,25 @@ if (!Array.prototype.forEach) {
          * @returns {EasJs}
          */
         find : function(selector) { //79% better than jQuery
+            var newSelector = [];
             if (typeof selector === 'string') {
+                if (this.idRegExp.test(selector)) {
+                    newSelector.push(document.getElementById(selector.substring(1)));
+                    this.selectorLength = 1;
+                } else {
+                    Array.prototype.forEach.call(this.selector, function(item){
+                        Array.prototype.forEach.call(item.querySelectorAll(selector), function(element){
+                            newSelector.push(element);
+                        });
+                    });
 
-                selector = this.selector.querySelectorAll(selector);
-                /*} else {
-                 if (this.tagRegExp.exec(selector)){
-                 selector = this.selector.getElementsByTagName(selector);
-                 }
-                 }*/
+                    this.selectorLength = newSelector.length;
+                }
+                this.selector = newSelector;
             }
             if (selector === null) {
                 this.selectorLength = 0;
-            } else {
-                this.selectorLength = selector.length || 0;
             }
-
-            this.selector = selector;
 
             return this;
         },
@@ -336,10 +339,7 @@ if (!Array.prototype.forEach) {
                     });
                     return this;
                 } else {
-                    var element = this.selector;
-                    if (this.selectorLength > 1) {
-                        element = this.selector[0];
-                    }
+                    var element = this.selector[0];
                 }
                 //get
                 return getComputedStyle(element)[key];
@@ -454,23 +454,23 @@ if (!Array.prototype.forEach) {
                 left: element.offsetLeft
 
             };
-            return this;
         },
         /**
          * prepend a node to the current EasJs scoped html element
          * @param elts
          */
-        prepend : function (elts) { //92% better than jquery
+        prepend : function (elts) { //92% better than jquery => @todo a revoir
             var eltLength = 0;
             var self = this;
             Array.prototype.forEach.call(this.selector, function(item){
                 var elt;
                 if (typeof elts === 'string') {
                     elt = self.parseHTML(elts);
-                    eltLength = elt.length;
                 } else {
+                    elt = [];
                     elt[0] = elts;
                 }
+                eltLength = elt.length;
                 while(eltLength > 0) {
                     var element = elt[eltLength - 1];
                     item.insertBefore(element, item.firstChild);
@@ -636,7 +636,8 @@ if (!Array.prototype.forEach) {
             this.headTag = document.getElementsByTagName('head')[0];
             //add class for IE
             var touchDevice = ' no-touch', version = 'ie ';
-            if(('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+            /** @namespace window.DocumentTouch */
+            if(('ontouchstart' in window) || window.DocumentTouch && document instanceof windows.DocumentTouch) {
                 touchDevice = ' touch';
                 this.isTouchDevice = true;
             }
@@ -815,15 +816,13 @@ if (!Array.prototype.forEach) {
          * @returns {EasJs}
          */
         load : function(url, options){
-            var self = this;
             this.toload.push(url);
             if (this.browsers.ie && this.browsers.version <= 11) {
                 this._loadFromIE(url, options);
             } else {
                 var currentLoad = [];
                 currentLoad.push(this._load(url, options).then(function(ressource){return ressource}));
-                Promise.all(currentLoad).then(function(){
-                }).catch(function(error){
+                Promise.all(currentLoad).then(function(){}).catch(function(error){
                     console.log(error);
                 });
             }
@@ -1007,13 +1006,13 @@ if (!Array.prototype.forEach) {
                 'test' : 'test'
             },
             success : function(response){
-                //console.log(response);
+                ...
             },
             fail : function(xhr, status, errorResponse) {
                 console.log(xhr, status, errorResponse);
             },
             complete : function() {
-                //console.log('ajax finish');
+                ...
             }
         });
          * @param options
@@ -1223,7 +1222,6 @@ if (!Array.prototype.forEach) {
                     var currentElt = elt[i],
                         screenHeight = window.innerHeight,
                         imgPosition = this.offset(currentElt),
-                        loaded = false,
                         htmlBodyTop;
                     if ((EasJs.browsers.ie && parseInt(EasJs.browsers.version, 10) <= 8) || scrollable === false) {
                         currentElt.src = currentElt.dataset['original'];
@@ -1338,6 +1336,9 @@ if (!Array.prototype.forEach) {
     }
     if (typeof window.$$ === 'undefined') {
         window.$$ = EasJs;
+    }
+    if (typeof window.E === 'undefined') {
+        window.E = EasJs;
     }
     EasJs.init();
 })(window);
