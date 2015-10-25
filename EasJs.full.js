@@ -16,13 +16,13 @@ if (!Array.prototype.forEach) {
     Array.prototype.forEach = function (callback, thisArg) {
         var T, k;
         if (this == null) {
-            throw new TypeError(' this vaut null ou n est pas défini');
+            throw new TypeError(' this is null or undefined');
         }
 
         var O = Object(this);
         var len = O.length >>> 0;
         if (typeof callback !== "function") {
-            throw new TypeError(callback + ' n est pas une fonction');
+            throw new TypeError(callback + ' is not a fonction');
         }
         if (arguments.length > 1) {
             T = thisArg;
