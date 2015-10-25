@@ -21,7 +21,8 @@
             console.log('h1', $$('h2').html('test v2'));
             console.log('h1', $$('.test-className-2').html('test v2'));
             console.log('h1', $$('h2.test-className-2'));
-            console.log('top', $$(document.getElementById('top')).data('test'));
+            console.log('button', $$(document.getElementsByTagName('button')));
+            console.log('top', $$(document.getElementsByTagName('button')).data('test'));
             /*EasJs.addClass(document.getElementsByTagName('h1'), 'test');
             EasJs.addClass(document.getElementsByTagName('h1'), 'test2');
             EasJs.removeClass(document.getElementsByTagName('h1'), 'test');*/
