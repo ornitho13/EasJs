@@ -13,3 +13,6 @@
     transition: all .6s ease-in;
     opacity: 0;
 }
+.eas-test {
+    background: #fefefe;
+}
