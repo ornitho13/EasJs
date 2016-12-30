@@ -4,17 +4,17 @@
 (function(window){
     "use strict";
     var EasJs = {
-        headTag : null,
-        browsers : {
-            ie : false,
-            webkit : false,
-            opera : false,
-            firefox : false,
-            version : false
+        headTag: null,
+        browsers: {
+            ie: false,
+            webkit: false,
+            opera: false,
+            firefox: false,
+            version: false
         },
-        html : document.getElementsByTagName('html')[0],
-        isTouchDevice : false,
-        init : function() {
+        html: document.getElementsByTagName('html')[0],
+        isTouchDevice: false,
+        init: function() {
             this.headTag = document.getElementsByTagName('head')[0];
             //add class for IE
             var touchDevice = ' no-touch', version = 'ie ';
@@ -22,35 +22,34 @@
                 touchDevice = ' touch';
                 this.isTouchDevice = true;
             }
-            if (typeof window.head === 'undefined') {
-                if (document.all) {
-                    this.browsers.ie = true;
-                    if (!document.querySelector) { // IE6 et IE 7
-                        if (window.XMLHttpRequest) {
-                            this.browsers.version = 7;
-                            version += 'ie-7 no-box-sizing';
-                        } else {
-                            this.browsers.version = 6;
-                            version += 'ie-6 no-box-sizing';
-                        }
+
+            if (document.all) {
+                this.browsers.ie = true;
+                if (!document.querySelector) { // IE6 et IE 7
+                    if (window.XMLHttpRequest) {
+                        this.browsers.version = 7;
+                        version += 'ie-7 no-box-sizing';
                     } else {
-                        if (!document.addEventListener) { //IE8
-                            this.browsers.version = 8;
-                            version += 'ie-8';
-                        } else { //IE 9 et 10
-                            if (window.atob) {
-                                version +='ie-10';
-                            } else {
-                                version +='ie-9';
-                            }
-                        }
+                        this.browsers.version = 6;
+                        version += 'ie-6 no-box-sizing';
                     }
                 } else {
-                    if (!!window.MSStream) {
-                        version += 'ie-11';
-                    } else {
-                        version = 'no-ie ';
+                    if (!document.addEventListener) { //IE8
+                        this.browsers.version = 8;
+                        version += 'ie-8';
+                    } else { //IE 9 et 10
+                        if (window.atob) {
+                            version += 'ie-10';
+                        } else {
+                            version += 'ie-9';
+                        }
                     }
+                }
+            } else {
+                if (!!window.MSStream) {
+                    version += 'ie-11';
+                } else {
+                    version = 'no-ie ';
                     if (!!window.opera) {
                         this.browsers.opera = true;
                         version += 'opera';
@@ -63,17 +62,19 @@
                     }
                 }
 
-                this.html.className = version + touchDevice + (this.options.transitionEnabled ? ' eas-animation' : '');
             }
+
+            this.html.className = version + touchDevice + (this.options.transitionEnabled ? ' eas-animation' : '');
+
         },
-        test : function(testInstruction, successCallback, failedCallback) {
+        test: function(testInstruction, successCallback, failedCallback) {
             if ((testInstruction)) {
                 successCallback();
             } else {
                 failedCallback();
             }
         },
-        feature : function(feature, callback){
+        feature: function(feature, callback){
             this[feature] = callback();
         },
         _load : function (url, options) {
@@ -511,20 +512,20 @@
             if (typeof data.trim !== 'undefined') {
                 data = data.trim();
             }
-            if (window.JSON && window.JSON.parse ) {
+            if (window.JSON && window.JSON.parse) {
                 return window.JSON.parse(data, reviser);
             } else {
                 throw new Error('JSON.parse no native support');
             }
         },
-        stringify : function(value, replacer, space){
-            if ( window.JSON && window.JSON.stringify ) {
+        stringify: function(value, replacer, space) {
+            if (window.JSON && window.JSON.stringify) {
                 return window.JSON.stringify(value, replacer, space);
             } else {
                 throw new Error('JSON.stringify no native support');
             }
         },
-        applyConfig : function(options){
+        applyConfig: function(options) {
             this.options = options;
             if (this.options.transitionEnabled) {
                 if (!/(eas-animation)/.test(this.html.className)) {
