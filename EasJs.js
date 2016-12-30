@@ -27,12 +27,10 @@ var EasJs = {
     isTouchDevice: false,
     alwaysCaching: true,
     _touchEventInitialize: [],
-    htmlTag: null,
     headTag: null,
     asynchrone: false,
     storage: false,
     init: function() {
-        this.htmlTag = document.getElementsByTagName('html')[0];
         this.headTag = document.getElementsByTagName('head')[0];
         //add class for IE
         var touchDevice = ' no-touch', div, version = 'ie ', isIe9;
@@ -276,7 +274,7 @@ var EasJs = {
         }
         dom.appendChild(scriptTag);
     },
-    lazyLoadImage: function (elt, event, imgHeight) {
+    lazyLoadImage: function (elt, event, imgHeight, scrollElt) {
         var $this = this;
         if (typeof imgHeight == 'undefined') {
             imgHeight = 140;
@@ -284,6 +282,9 @@ var EasJs = {
         if (typeof event == 'undefined') {
             event = $this.eventCallback;
         }
+        if (typeof scrollElt == 'undefined'){
+			scrollElt = document;
+		}
         if (typeof jQuery == 'undefined') {
             return false;
         }
