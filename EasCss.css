@@ -12,4 +12,5 @@
     -o-transition: all .6s ease-in;
     transition: all .6s ease-in;
     opacity: 0;
+    display: inline;
 }
